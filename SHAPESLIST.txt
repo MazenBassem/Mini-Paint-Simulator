@@ -1,0 +1,7 @@
+Circle{radius=100.0}
+Square{side=54.0}
+Circle{radius=99.0}
+Rectangle{width=68.0, length=153.0}
+Line{y2=400.0, x2=600.0}
+Circle{radius=200.0}
+Square{side=200.0}

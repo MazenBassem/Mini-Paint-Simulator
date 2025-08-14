@@ -1,0 +1,96 @@
+Index: Mini_Paint/src/Backend/Circle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Mini_Paint/src/Backend/Circle.java b/Mini_Paint/src/Backend/Circle.java
+--- a/Mini_Paint/src/Backend/Circle.java	
++++ b/Mini_Paint/src/Backend/Circle.java	(date 1732641077369)
+@@ -39,8 +39,7 @@
+     }
+ 
+     @Override
+-    public String toString() {
+-        return "Circle{radius=" + properties.get("radius") + "} Position=" + position +
+-                " Color=" + color + " FillColor=" + fillColor;
++    public String toString(){
++        return "Circle" + getProperties() + getPosition() + getColor() + getFillColor();
+     }
+ }
+Index: Mini_Paint/src/Backend/Engine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Mini_Paint/src/Backend/Engine.java b/Mini_Paint/src/Backend/Engine.java
+--- a/Mini_Paint/src/Backend/Engine.java	
++++ b/Mini_Paint/src/Backend/Engine.java	(date 1732640947215)
+@@ -343,6 +343,31 @@
+         }
+     }
+ 
++    public void load2() {
++        File filename = selectFile();
++        if (filename == null) {
++            JOptionPane.showMessageDialog(null, "No file selected.");
++            return;
++        }
++
++        try (ObjectInputStream load = new ObjectInputStream(new FileInputStream(filename))) {
++            shapes = (ArrayList<Shape>) load.readObject();
++
++            if (shapes.isEmpty()) {
++                JOptionPane.showMessageDialog(null, "The file is empty.");
++            } else {
++                for (Shape shape : shapes) {
++                    mini.shapesCombo.addItem(shape);
++                }
++                mini.repaint(); // Repaint once after all shapes are added
++            }
++        } catch (IOException e) {
++            JOptionPane.showMessageDialog(null, "Error loading file: " + e.getMessage());
++        } catch (ClassNotFoundException e) {
++            JOptionPane.showMessageDialog(null, "Error: File contains unsupported objects.");
++        }
++    }
++
+     public void load(){
+         File filename = selectFile();
+ 
+@@ -370,8 +395,14 @@
+ 
+ 
+     public void save(){
++        if (shapes.isEmpty()){
++            JOptionPane.showMessageDialog(null, "No Shapes to save!");
++            return;
++        }
++
+         File filename = selectFile();
+ 
++
+         if (filename == null){
+             return;
+         }
+Index: Mini_Paint/src/Backend/ShapeClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Mini_Paint/src/Backend/ShapeClass.java b/Mini_Paint/src/Backend/ShapeClass.java
+--- a/Mini_Paint/src/Backend/ShapeClass.java	
++++ b/Mini_Paint/src/Backend/ShapeClass.java	(date 1732640023928)
+@@ -1,11 +1,12 @@
+ package Backend;
+ 
+ import java.awt.*;
++import java.io.Serializable;
+ import java.util.HashMap;
+ import java.util.Map;
+ import java.util.regex.*;
+ 
+-public abstract class ShapeClass{
++public abstract class ShapeClass implements Serializable {
+     protected Point position;
+     protected Map<String, Double> properties;
+     protected Color color;
