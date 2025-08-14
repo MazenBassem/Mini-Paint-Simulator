@@ -37,6 +37,10 @@ public class Square extends ShapeClass implements Shape {
         }
     }
     public String toString(){
+<<<<<<< HEAD
         return "Square" +getProperties() ;
+=======
+        return "Square" + getProperties();
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     }
 }

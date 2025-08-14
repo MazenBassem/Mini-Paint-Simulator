@@ -78,6 +78,10 @@ public class Line extends ShapeClass implements Shape {
         }
     }
     public String toString(){
+<<<<<<< HEAD
         return "Line" + getProperties() ;
+=======
+        return "Line" + properties.toString();
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     }
 }

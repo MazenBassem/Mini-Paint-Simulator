@@ -1,17 +1,25 @@
 package Backend;
 
 import Frontend.MiniPaint;
+<<<<<<< HEAD
 import Frontend.open_window;
+=======
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
 import Interface.DrawingEngine;
 import Interface.Shape;
 
 import javax.swing.*;
 import java.awt.*;
+<<<<<<< HEAD
 import java.io.*;
 import java.lang.System;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+=======
+import java.lang.System;
+import java.util.ArrayList;
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
 
 public class Engine implements DrawingEngine {
     private ArrayList<Shape> shapes;
@@ -27,7 +35,11 @@ public class Engine implements DrawingEngine {
         if(shape != null) {
             shapes.add(shape);
             mini.shapesCombo.addItem(shape);
+<<<<<<< HEAD
             mini.repaint();
+=======
+            refresh(mini.getGraphics());
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
         }
     }
 
@@ -56,6 +68,10 @@ public class Engine implements DrawingEngine {
         String input = JOptionPane.showInputDialog("Enter radius:");
         try {
             double radius = Double.parseDouble(input);
+<<<<<<< HEAD
+=======
+            double side = Double.parseDouble(input);
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
             if(radius < 0) {
                 JOptionPane.showMessageDialog(null, "Radius cannot be negative!");
                 return;
@@ -71,6 +87,12 @@ public class Engine implements DrawingEngine {
             // Set position using method
             circle.setPosition(getPosition());
 
+<<<<<<< HEAD
+=======
+            // Draw the circle on the canvas
+            circle.draw(mini.getGraphics());
+
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
             // Add Shape to list of shapes
             addShape(circle);
         } catch (NumberFormatException e) {
@@ -97,6 +119,12 @@ public class Engine implements DrawingEngine {
             // Set position using method
             square.setPosition(getPosition());
 
+<<<<<<< HEAD
+=======
+            // Draw the circle on the canvas
+            square.draw(mini.getGraphics());
+
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
             // Add Shape to list of shapes
             addShape(square);
 
@@ -126,11 +154,21 @@ public class Engine implements DrawingEngine {
             // Set position using method
             rectangle.setPosition(getPosition());
 
+<<<<<<< HEAD
+=======
+            // Draw the circle on the canvas
+            rectangle.draw(mini.getGraphics());
+
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
             // Add Shape to list of shapes
             addShape(rectangle);
 
         } catch (NumberFormatException e) {
+<<<<<<< HEAD
             JOptionPane.showMessageDialog(null, "Please enter a valid number for dimensions");
+=======
+            JOptionPane.showMessageDialog(null, "Please enter a valid number for side length");
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
         }
     }
 
@@ -161,16 +199,27 @@ public class Engine implements DrawingEngine {
             // Set position using method
             line.setPosition(point);
 
+<<<<<<< HEAD
+=======
+            // Draw the circle on the canvas
+            line.draw(mini.getGraphics());
+
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
             // Add Shape to list of shapes
             addShape(line);
 
         } catch (NumberFormatException e) {
+<<<<<<< HEAD
             JOptionPane.showMessageDialog(null, "Please enter valid co-ordinates");
+=======
+            JOptionPane.showMessageDialog(null, "Please enter a valid number for side length");
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
         }
     }
 
     public void colorize() {
         Shape shape = (Shape) mini.shapesCombo.getSelectedItem();
+<<<<<<< HEAD
         if (shape == null) {
             JOptionPane.showMessageDialog(null, "No shape selected!");
             return;
@@ -319,6 +368,23 @@ public class Engine implements DrawingEngine {
 
         shape.setPosition(getPosition());
         mini.repaint();
+=======
+        if (shape == null)
+            return;
+
+        Color outlineCol = JColorChooser.showDialog(null, "pick a frame color", null);
+        if (outlineCol != null) {
+            shape.setColor(outlineCol);
+            refresh(mini.getGraphics());
+        }
+
+        Color fillColor = JColorChooser.showDialog(null, "pick a fill color", null);
+        if (fillColor != null) {
+            shape.setFillColor(fillColor);
+            refresh(mini.getGraphics());
+        }
+
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     }
 
     public Point getPosition(){
@@ -346,6 +412,7 @@ public class Engine implements DrawingEngine {
         }
     }
 
+<<<<<<< HEAD
     public void load2() {
         File filename = selectFile();
         ArrayList<Shape> shapes_copy;
@@ -480,6 +547,8 @@ public class Engine implements DrawingEngine {
         }
     }
 
+=======
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     public static void main(String[] args) {
         MiniPaint mini = new MiniPaint();
         Engine eng = new Engine(mini);
@@ -494,5 +563,8 @@ public class Engine implements DrawingEngine {
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
 }

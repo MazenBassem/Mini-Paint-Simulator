@@ -5,7 +5,7 @@ import Interface.Shape;
 import java.awt.*;
 import java.util.Map;
 
-public class Circle extends ShapeClass implements Shape {
+public class CirclCopy extends ShapeClass implements Shape {
 
     Circle(double radius){
         super();
@@ -19,10 +19,6 @@ public class Circle extends ShapeClass implements Shape {
         }
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     @Override
     public void draw(Graphics canvas) {
         if (canvas instanceof Graphics2D) {

@@ -1,12 +1,19 @@
 package Backend;
 
 import java.awt.*;
+<<<<<<< HEAD
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.*;
 
 public abstract class ShapeClass implements Serializable {
+=======
+import java.util.HashMap;
+import java.util.Map;
+
+public abstract class ShapeClass {
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     protected Point position;
     protected Map<String, Double> properties;
     protected Color color;
@@ -17,6 +24,7 @@ public abstract class ShapeClass implements Serializable {
         this.properties = new HashMap<>();
     }
 
+<<<<<<< HEAD
     public static ShapeClass parseShape(String line) {
         // Patterns for different components
         Pattern shapePattern = Pattern.compile("^(Circle|Square|Rectangle|Line)\\{(.*?)}");
@@ -94,6 +102,8 @@ public abstract class ShapeClass implements Serializable {
         return shape;
     }
 
+=======
+>>>>>>> 514fa3b6efa627bb2f691fb6eb5f89bb64ff5c43
     public void setPosition(Point point) {
         this.position = point;
     }
